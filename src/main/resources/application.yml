@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: authorization-server
+
+server:
+  port: 8085
+
+eureka:
+  instance:
+    hostname: localhost
+
+springdoc:
+  pathsToMatch: /api/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+security:
+  oauth2:
+    resource:
+      filter-order: 3
