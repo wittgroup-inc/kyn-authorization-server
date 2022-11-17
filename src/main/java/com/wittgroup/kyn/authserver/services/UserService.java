@@ -24,20 +24,22 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Resilience4JCircuitBreaker circuitBreaker = circuitBreakerFactory.create("profile-management");
         Supplier<UUID> userSupplier = () -> userClient.signUp(user);
-        return circuitBreaker.run(userSupplier, throwable -> handleSignupError());
+        return circuitBreaker.run(userSupplier, this::handleSignupError);
     }
 
     public User loadUser(final String q) {
         Resilience4JCircuitBreaker circuitBreaker = circuitBreakerFactory.create("profile-management");
         Supplier<User> addressSupplier = () -> userClient.loadUser(q);
-        return circuitBreaker.run(addressSupplier, throwable -> handleUserServiceErrorCase());
+        return circuitBreaker.run(addressSupplier, this::handleUserServiceErrorCase);
     }
 
-    private UUID handleSignupError()    {
+    private UUID handleSignupError(Throwable t)    {
+        System.out.println(t.getMessage());
         throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY);
     }
 
-    private User handleUserServiceErrorCase() throws ResponseStatusException {
+    private User handleUserServiceErrorCase(Throwable t) throws ResponseStatusException {
+        System.out.println(t.getMessage());
         throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY);
     }
 
