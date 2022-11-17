@@ -8,7 +8,6 @@ import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuit
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
@@ -25,22 +24,22 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Resilience4JCircuitBreaker circuitBreaker = circuitBreakerFactory.create("profile-management");
         Supplier<UUID> userSupplier = () -> userClient.signUp(user);
-        return circuitBreaker.run(userSupplier, throwable -> handleSignupError());
+        return circuitBreaker.run(userSupplier, this::handleSignupError);
     }
 
     public User loadUser(final String q) {
-        RestTemplate template = new RestTemplate();
-     // return  template.getForObject("http://localhost:8081/api/profiles/loadUser/pawan6186.sd@gmail.com", User.class);
         Resilience4JCircuitBreaker circuitBreaker = circuitBreakerFactory.create("profile-management");
         Supplier<User> addressSupplier = () -> userClient.loadUser(q);
-        return circuitBreaker.run(addressSupplier, throwable -> handleUserServiceErrorCase());
+        return circuitBreaker.run(addressSupplier, this::handleUserServiceErrorCase);
     }
 
-    private UUID handleSignupError()    {
+    private UUID handleSignupError(Throwable t)    {
+        System.out.println(t.getMessage());
         throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY);
     }
 
-    private User handleUserServiceErrorCase() throws ResponseStatusException {
+    private User handleUserServiceErrorCase(Throwable t) throws ResponseStatusException {
+        System.out.println(t.getMessage());
         throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY);
     }
 
