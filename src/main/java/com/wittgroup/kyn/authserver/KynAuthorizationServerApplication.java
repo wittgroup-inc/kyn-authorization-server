@@ -1,5 +1,6 @@
 package com.wittgroup.kyn.authserver;
 
+import feign.codec.ErrorDecoder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -19,6 +20,12 @@ public class KynAuthorizationServerApplication {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
+    }
+
+
+    @Bean
+    public ErrorDecoder errorDecoder() {
+        return new ResponseErrorDecoder();
     }
 
 }

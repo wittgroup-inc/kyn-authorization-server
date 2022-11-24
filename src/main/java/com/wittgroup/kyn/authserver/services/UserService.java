@@ -3,6 +3,7 @@ package com.wittgroup.kyn.authserver.services;
 import com.wittgroup.kyn.authserver.client.UserClient;
 import com.wittgroup.kyn.authserver.models.User;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreaker;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.function.Supplier;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
     private final UserClient userClient;
     private final PasswordEncoder passwordEncoder;
@@ -34,13 +36,13 @@ public class UserService {
     }
 
     private UUID handleSignupError(Throwable t)    {
-        System.out.println(t.getMessage());
-        throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY);
+        log.debug(t.getMessage());
+        throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY, t.getMessage());
     }
 
     private User handleUserServiceErrorCase(Throwable t) throws ResponseStatusException {
-        System.out.println(t.getMessage());
-        throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY);
+        log.debug(t.getMessage());
+        throw new ResponseStatusException(HttpStatus.FAILED_DEPENDENCY, t.getMessage());
     }
 
 }
