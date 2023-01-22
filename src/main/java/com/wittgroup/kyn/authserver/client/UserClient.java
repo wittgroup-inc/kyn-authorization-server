@@ -1,3 +1,4 @@
+/*
 package com.wittgroup.kyn.authserver.client;
 
 import com.wittgroup.kyn.authserver.models.User;
@@ -17,3 +18,4 @@ public interface UserClient {
     @PostMapping("/api/profiles/createUser")
     UUID signUp(@RequestBody User user);
 }
+*/
