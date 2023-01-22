@@ -1,5 +1,3 @@
-
-/*
 package com.wittgroup.kyn.authserver.api;
 
 import com.wittgroup.kyn.authserver.models.User;
@@ -30,4 +28,3 @@ public class UserResource {
     }
 
 }
-*/

@@ -1,4 +1,3 @@
-/*
 package com.wittgroup.kyn.authserver.services;
 
 import com.wittgroup.kyn.authserver.client.UserClient;
@@ -47,4 +46,3 @@ public class UserService {
     }
 
 }
-*/
