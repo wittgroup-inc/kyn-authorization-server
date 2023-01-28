@@ -6,14 +6,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 
+
+@RequiredArgsConstructor
 public class UserDetailsMapper {
     public static UserDetails toUserDetails(final User user){
         return  new UserDetails() {
@@ -65,7 +64,7 @@ public class UserDetailsMapper {
 
             @Override
             public String getPassword() {
-                return new BCryptPasswordEncoder(10).encode("pass");
+                return new BCryptPasswordEncoder(10).encode("123");
             }
 
             @Override

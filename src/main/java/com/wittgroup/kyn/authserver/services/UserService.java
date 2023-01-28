@@ -24,13 +24,13 @@ public class UserService {
 
     public UUID signUp(final User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Resilience4JCircuitBreaker circuitBreaker = circuitBreakerFactory.create("profile-management");
+        Resilience4JCircuitBreaker circuitBreaker = (Resilience4JCircuitBreaker) circuitBreakerFactory.create("profile-management");
         Supplier<UUID> userSupplier = () -> userClient.signUp(user);
         return circuitBreaker.run(userSupplier, this::handleSignupError);
     }
 
     public User loadUser(final String q) {
-        Resilience4JCircuitBreaker circuitBreaker = circuitBreakerFactory.create("profile-management");
+        Resilience4JCircuitBreaker circuitBreaker = (Resilience4JCircuitBreaker) circuitBreakerFactory.create("profile-management");
         Supplier<User> addressSupplier = () -> userClient.loadUser(q);
         return circuitBreaker.run(addressSupplier, this::handleUserServiceErrorCase);
     }
