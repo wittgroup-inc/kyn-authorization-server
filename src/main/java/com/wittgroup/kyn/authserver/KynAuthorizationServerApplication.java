@@ -9,23 +9,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients()
 public class KynAuthorizationServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KynAuthorizationServerApplication.class, args);
     }
-
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(10);
-    }
-
-
     @Bean
     public ErrorDecoder errorDecoder() {
         return new ResponseErrorDecoder();
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10);
+    }
 }
