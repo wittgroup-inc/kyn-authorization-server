@@ -36,13 +36,20 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class DefaultSecurityConfig {
 
     private final UserService userService;
+
     // @formatter:off
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorize ->
-                        authorize.anyRequest().authenticated()
-                )
+                .csrf().disable()
+                .authorizeHttpRequests()
+                .requestMatchers("/api/users/signUp")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic()
+                .and()
                 .formLogin(withDefaults());
         return http.build();
     }
@@ -53,7 +60,5 @@ public class DefaultSecurityConfig {
     UserDetailsService users() {
         return new KynUserDetailsManager(userService);
     }
-
     // @formatter:on
-
 }
