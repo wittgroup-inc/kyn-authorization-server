@@ -1,7 +1,7 @@
 
-package com.wittgroup.kyn.authserver.client;
+package com.gowittgroup.kyn.authserver.client;
 
-import com.wittgroup.kyn.authserver.models.User;
+import com.gowittgroup.kyn.authserver.models.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

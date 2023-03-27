@@ -1,4 +1,4 @@
-package com.wittgroup.kyn.authserver.models;
+package com.gowittgroup.kyn.authserver.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;

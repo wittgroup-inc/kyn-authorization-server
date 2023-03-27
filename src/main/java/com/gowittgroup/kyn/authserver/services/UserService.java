@@ -1,7 +1,7 @@
-package com.wittgroup.kyn.authserver.services;
+package com.gowittgroup.kyn.authserver.services;
 
-import com.wittgroup.kyn.authserver.client.UserClient;
-import com.wittgroup.kyn.authserver.models.User;
+import com.gowittgroup.kyn.authserver.client.UserClient;
+import com.gowittgroup.kyn.authserver.models.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreaker;

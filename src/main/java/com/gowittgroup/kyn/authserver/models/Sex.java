@@ -1,4 +1,4 @@
-package com.wittgroup.kyn.authserver.models;
+package com.gowittgroup.kyn.authserver.models;
 
 
 public enum Sex {
