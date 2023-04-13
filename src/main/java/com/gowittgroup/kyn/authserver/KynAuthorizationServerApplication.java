@@ -1,4 +1,4 @@
-package com.wittgroup.kyn.authserver;
+package com.gowittgroup.kyn.authserver;
 
 import feign.codec.ErrorDecoder;
 import org.springframework.boot.SpringApplication;

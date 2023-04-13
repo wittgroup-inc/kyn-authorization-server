@@ -1,4 +1,4 @@
-package com.wittgroup.kyn.authserver.config;
+package com.gowittgroup.kyn.authserver.config;
 /** Copyright 2020-2022 the original author or authors.
 		*
 		* Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
-import com.wittgroup.kyn.authserver.util.Jwks;
+import com.gowittgroup.kyn.authserver.util.Jwks;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;

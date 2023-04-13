@@ -1,4 +1,4 @@
-package com.wittgroup.kyn.authserver;
+package com.gowittgroup.kyn.authserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

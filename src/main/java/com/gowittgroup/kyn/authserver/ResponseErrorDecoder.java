@@ -1,7 +1,7 @@
-package com.wittgroup.kyn.authserver;
+package com.gowittgroup.kyn.authserver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wittgroup.kyn.authserver.models.ErrorResponse;
+import com.gowittgroup.kyn.authserver.models.ErrorResponse;
 import feign.Response;
 import feign.codec.ErrorDecoder;
 import lombok.extern.slf4j.Slf4j;
