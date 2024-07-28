@@ -1,8 +1,8 @@
-package com.wittgroup.kyn.authserver.config;
+package com.gowittgroup.kyn.authserver.config;
 
 
-import com.wittgroup.kyn.authserver.models.ErrorResponse;
-import com.wittgroup.kyn.authserver.models.FieldError;
+import com.gowittgroup.kyn.authserver.models.FieldError;
+import com.gowittgroup.kyn.authserver.models.ErrorResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

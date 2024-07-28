@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.wittgroup.kyn.authserver.config;
+package com.gowittgroup.kyn.authserver.config;
 
-import com.wittgroup.kyn.authserver.services.UserService;
+import com.gowittgroup.kyn.authserver.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

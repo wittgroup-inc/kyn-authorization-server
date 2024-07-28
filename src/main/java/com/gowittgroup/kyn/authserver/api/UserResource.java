@@ -1,7 +1,7 @@
-package com.wittgroup.kyn.authserver.api;
+package com.gowittgroup.kyn.authserver.api;
 
-import com.wittgroup.kyn.authserver.models.User;
-import com.wittgroup.kyn.authserver.services.UserService;
+import com.gowittgroup.kyn.authserver.models.User;
+import com.gowittgroup.kyn.authserver.services.UserService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

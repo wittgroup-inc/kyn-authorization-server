@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.wittgroup.kyn.authserver.util;
+package com.gowittgroup.kyn.authserver.util;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
