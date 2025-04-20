@@ -28,3 +28,6 @@ feign:
       default:
         connectTimeout: 60000
         readTimeout: 10000
+logging:
+  level:
+    org.springframework.security: DEBUG
