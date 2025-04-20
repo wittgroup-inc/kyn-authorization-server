@@ -33,6 +33,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
@@ -58,7 +59,7 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 @Configuration(proxyBeanMethods = false)
 public class AuthorizationServerConfig {
 	private final String CLIENT_ID = "kyn-cloud-gateway";
-	private final String CLIENT_SECRET = "{noop}1232kyn123";
+	private final String CLIENT_SECRET = "1232kyn123";
 	@Bean
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -78,10 +79,10 @@ public class AuthorizationServerConfig {
 
 	// @formatter:off
 	@Bean
-	public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate) {
+	public RegisteredClientRepository registeredClientRepository(JdbcTemplate jdbcTemplate, PasswordEncoder passwordEncoder) {
 		RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
 				.clientId(CLIENT_ID)
-				.clientSecret(CLIENT_SECRET)
+				.clientSecret(passwordEncoder.encode(CLIENT_SECRET))
 				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
 				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 				.authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
