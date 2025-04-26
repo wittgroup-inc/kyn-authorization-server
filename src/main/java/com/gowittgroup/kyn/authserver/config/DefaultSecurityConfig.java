@@ -43,14 +43,29 @@ public class DefaultSecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/users/signUp")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+                .requestMatchers(
+                        "/api/users/signUp",
+                        "/custom-login",
+                        "/login",
+                        "/css/**",
+                        "/js/**",
+                        "/images/**"
+                ).permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/custom-login")
+                .loginProcessingUrl("/login")
+                .failureUrl("/custom-login?error=true")
                 .and()
                 .httpBasic()
                 .and()
-                .formLogin(withDefaults());
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/custom-login?logout=true")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");
+
         return http.build();
     }
     // @formatter:on
